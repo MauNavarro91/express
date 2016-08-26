@@ -1,0 +1,78 @@
+@html.extend('layout',function(model){
+<body>
+@html.block('header',function(model){
+      <header id="header" class="clear">
+      <div id="hgroup">
+        <h1><a href="#">Mi Movie finder</a></h1>
+        <h2>Free Movie Reviews</h2>
+      </div>
+      <form action="/" method="POST">
+        <fieldset>
+          <legend>Search:</legend>
+          <input type="text"  placeholder="Busca una película" name="Title">
+          <input type="submit" id="sf_submit" value="Buscar">
+        </fieldset>
+      </form>
+    </header>
+})
+
+@html.block('content',function(model){
+<!-- content -->
+
+  <div class="clear" id ="container" >
+    <!-- content body -->
+    <section id="slider"><a href="#"><img src="images/cinema.jpg" alt=""></a></section>
+    <!-- main content -->
+    <div id="homepage" class="clear">
+      <section id="services" class="clear">
+        <!-- article 1 -->
+        @{ 
+            if(@model.peliculas.Search.length <= 3 )
+            {
+              if(@model.peliculas.Search.length != 0)
+              {
+                @model.peliculas.Search.push(@model.peliculas.Search[0]);
+                @model.peliculas.Search.push(@model.peliculas.Search[0]);
+              }
+              else{
+                var Search={Title:"null"};
+                @model.peliculas.Search.push(Search);
+                @model.peliculas.Search.push(Search);
+                @model.peliculas.Search.push(Search);
+                  }
+            }
+
+        }
+        <article class="one_third">
+          <h2>@model.peliculas.Search[0].Title</h2>
+          <img src="@model.peliculas.Search[0].Poster" alt= "Image not found" onerror="this.onerror=null;this.src='images/noimagen.jpg' " >
+          <footer class="more"><a href="/@model.peliculas.Search[0].imdbID" > Read More &raquo;</a></footer>
+        </article>
+        <!-- article 2 -->
+        <article class="one_third">
+          <h2>@model.peliculas.Search[1].Title</h2>
+          <img src="@model.peliculas.Search[1].Poster" alt="Image not found" onerror="this.onerror=null;this.src='images/noimagen.jpg'">
+          <footer class="more"><a href="/@model.peliculas.Search[1].imdbID"> Read More &raquo;</a></footer>
+        </article>
+        <!-- article 3 -->
+        <article class="one_third lastbox">
+          <h2>@model.peliculas.Search[2].Title</h2>
+          <img src="@model.peliculas.Search[2].Poster" alt="Image not found" onerror="this.onerror=null;this.src='images/noimagen.jpg'">
+          <footer class="more"><a href="/@model.peliculas.Search[2].imdbID"> Read More &raquo;</a></footer>
+        </article>
+      </section>
+      <!-- Left Box -->
+      <!-- Right Box -->
+    </div>
+    <!-- / content body -->
+  </div>
+})
+<!-- Footer -->
+<div class="wrapper row3">
+  <footer id="footer" class="clear">
+    <p class="fl_left">Copyright &copy; 2012 - All Rights Reserved - <a href="#">Mi movies</a></p>
+    <p class="fl_right">Template by <a href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+  </footer>
+</div>
+</body>
+})

@@ -1,0 +1,39 @@
+@html.extend('layout',function(model){
+
+@html.block('header',function(model){
+
+      <header id="header" class="clear">
+      <div id="hgroup">
+        <h1><a href="#">@model.pelicula.Title</a></h1>
+        <h2>Movie information</h2>
+      </div>
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Search:</legend>
+          <input type="text" placeholder="Busca otra pelicula">
+          <input type="submit" id="sf_submit" value="busca">
+        </fieldset>
+      </form>
+  </header>
+})
+@html.block('detail', function(model){
+<div id="container">
+	<div class="imagedetail">
+		<h3>@model.pelicula.Title</h3>
+		<img src="@model.pelicula.Poster" alt= "Image not found" onerror="this.onerror=null;this.src='images/noimagen.jpg' " >
+	</div>
+	<div class="textdetail">
+		<label class="key">Año: </label><label>@model.pelicula.Year </label><br>
+		<label class="key">Director:</label><label>@model.pelicula.Director </label><br>
+		<label class="key">Descripcion:</label><label> @model.pelicula.Plot </label><br>
+		<label class="key">Pais:</label><label> @model.pelicula.Country </label><br>
+	</div>
+</div>
+})
+@html.block('gohome',function(model){
+	<div class="homebutton">
+		<label>Home</label><br><a href="/"><img src="images/home.jpg"> </a>
+	</div>
+})
+
+})

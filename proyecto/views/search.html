@@ -1,0 +1,26 @@
+@html.extend('layout',function(model){
+
+@html.block('header',function(model){
+
+      <header id="header" class="clear">
+      <div id="hgroup">
+        <h1><a href="#">titulo de la pagina</a></h1>
+        <h2>Movie information</h2>
+      </div>
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Search:</legend>
+          <input type="text" placeholder="Busca otra pelicula">
+          <input type="submit" id="sf_submit" value="busca">
+        </fieldset>
+      </form>
+  </header>
+})
+
+
+@html.block('gohome',function(model){
+  <div class="homebutton">
+    <label>Home</label><br><a href="/"><img src="images/home.jpg"> </a>
+  </div>
+})
+})
